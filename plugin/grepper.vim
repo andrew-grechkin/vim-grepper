@@ -43,7 +43,7 @@ let s:defaults = {
       \ 'ag':            { 'grepprg':    'ag --vimgrep',
       \                    'grepformat': '%f:%l:%c:%m,%f:%l:%m,%f',
       \                    'escape':     '\^$.*+?()[]{}|' },
-      \ 'rg':            { 'grepprg':    'rg -H --no-heading --vimgrep' . (has('win32') ? ' $* .' : ''),
+      \ 'rg':            { 'grepprg':    'rg --vimgrep --no-messages' . (has('win32') ? ' $* .' : ''),
       \                    'grepformat': '%f:%l:%c:%m,%f',
       \                    'escape':     '\^$.*+?()[]{}|' },
       \ 'pt':            { 'grepprg':    'pt --nogroup',
@@ -1126,7 +1126,7 @@ function! s:side_buffer_settings() abort
   nmap <buffer> }    <plug>(grepper-side-context-next)<cr>
   nmap <buffer> {    <plug>(grepper-side-context-prev)<cr>
 
-  setlocal buftype=nofile bufhidden=wipe nonumber norelativenumber foldcolumn=0
+  setlocal buftype=nofile nobuflisted bufhidden=wipe nonumber norelativenumber foldcolumn=0
   set nowrap
 
   normal! zR
